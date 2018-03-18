@@ -1,7 +1,9 @@
 SHELL := /bin/bash
+export DEV_MODE=1
 export DEBUG=True
 export FLASK_DEBUG=1
 export FLASK_APP=nfl_picks
+export TEST_DB=postgres://postgres@localhost/test_nfl_picks
 
 clean:
 	@echo "Removing garbage"

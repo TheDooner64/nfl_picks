@@ -9,6 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # Database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres@localhost/nfl_picks'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
