@@ -10,16 +10,17 @@ class Team(db.Model):
     __tablename__ = 'team'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
+    short_name = db.Column(db.String(100), unique=True, nullable=False)
+    team_code = db.Column(db.String(5), unique=True, nullable=False)
+    location = db.Column(db.String(100), unique=True, nullable=False)
     conference = db.Column(db.String(100), nullable=False)
     division = db.Column(db.String(100), nullable=False)
-    espn_name = db.Column(db.String(100), unique=True, nullable=False)
-    oddsshark_name = db.Column(db.String(100), unique=True)
     date_added = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     date_updated = db.Column(db.DateTime(), default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
 
 def insert_or_update_team(team_data):
-    team_name = team_data.get('team_name')
+    team_name = team_data.get('name')
     existing_record = get_team(team_name)
 
     if existing_record:
