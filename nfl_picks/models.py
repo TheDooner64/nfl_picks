@@ -12,7 +12,7 @@ class Team(db.Model):
     name = db.Column(db.String(100), unique=True, nullable=False)
     short_name = db.Column(db.String(100), unique=True, nullable=False)
     team_code = db.Column(db.String(5), unique=True, nullable=False)
-    location = db.Column(db.String(100), unique=True, nullable=False)
+    location = db.Column(db.String(100), nullable=False)
     conference = db.Column(db.String(100), nullable=False)
     division = db.Column(db.String(100), nullable=False)
     date_added = db.Column(db.DateTime(), default=datetime.datetime.utcnow)

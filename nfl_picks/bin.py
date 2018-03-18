@@ -10,5 +10,5 @@ def get_nfl_teams():
 
     for division in nfl_teams_summary.divisions():
         for team in division.teams():
-            models.insert_or_update_team(team)
-            print('Inserted %s', team['name'])
+            models.insert_or_update_team(team.to_dict())
+            print('Inserted %s' % team.team_name)

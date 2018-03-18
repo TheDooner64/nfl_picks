@@ -16,3 +16,6 @@ migrate = Migrate(app, db)
 
 # Views
 from . import views  # NOQA
+
+# Models
+from . import models  # NOQA
