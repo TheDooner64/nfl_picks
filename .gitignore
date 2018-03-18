@@ -1,0 +1,12 @@
+*.pyc
+.coverage
+coverage/
+*egg-info/
+*.egg-info
+*.tox
+dist/
+.build.log
+build/
+node_modules/
+*.log
+manifest.json
