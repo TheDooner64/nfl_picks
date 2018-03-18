@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Views
-from . import views  # NOQA
+from nfl_picks import views  # NOQA
 
 # Models
-from . import models  # NOQA
+from nfl_picks import models  # NOQA

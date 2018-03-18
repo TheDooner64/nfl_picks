@@ -38,4 +38,10 @@ def get_team(team_name):
 
 
 def get_teams():
-    return Team.query.all()
+    query = """
+    SELECT id, short_name as name, conference, division
+    FROM team;
+    """
+
+    result = db.engine.execute(query)
+    return {row['id']: dict(zip(result.keys(), row)) for row in result}
