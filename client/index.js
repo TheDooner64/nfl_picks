@@ -1,6 +1,9 @@
-/* global __DEVELOPMENT__, module, require */
-if (__DEVELOPMENT__) {
-  module.exports = require('./index-dev') // eslint-disable-line global-require
-} else {
-  module.exports = require('./index-prod') // eslint-disable-line global-require
-}
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+ReactDOM.render(
+  <h1>
+    {'Hello, world!'}
+  </h1>,
+  document.getElementById('app')
+)
