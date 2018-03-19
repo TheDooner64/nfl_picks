@@ -1,0 +1,5 @@
+include requirements.txt
+include README.md
+include nfl_picks/manifest.json
+recursive-include nfl_picks/static *
+recursive-include nfl_picks/templates *

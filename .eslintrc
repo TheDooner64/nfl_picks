@@ -1,0 +1,75 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "class-methods-use-this": ["error", {
+      "exceptMethods": [
+        "render",
+        "getInitialState",
+        "getDefaultProps",
+        "getChildContext",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount",
+      ],
+    }],
+    "indent": [ 2, 2, {
+      "VariableDeclarator": {
+        "var": 2,
+        "let": 2,
+        "const": 3
+      },
+      "SwitchCase": 1
+    }],
+    "quotes": [ 2, "single" ],
+    "linebreak-style": [ 2, "unix" ],
+    "semi": [ 2, "never" ],
+    "quote-props": [ "error", "consistent-as-needed" ],
+    "one-var": [ "error", {"const": "never"} ],
+    "no-extra-parens": [ "error", "all", {"nestedBinaryExpressions": false, ignoreJSX: "multi-line"}],
+    "no-ternary": 0,
+    "no-magic-numbers": ["error", { "ignore": [0, 1] }],
+    "max-len": ["error", 120],
+    "max-lines": ["error", {"max": 400}],
+    "max-statements": ["error", {"max": 15}],
+    "react/jsx-wrap-multilines": [1, {"declaration": true, "assignment": true, "return": true, "arrow": false}],
+    "react/forbid-component-props": 0,
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx"]
+    }],
+    "react/jsx-indent": [1, 2],
+    "react/jsx-indent-props": [1, 2],
+    "react/jsx-max-props-per-line": [0, {
+      "maximum": 5
+    }],
+    "react/no-set-state": 0,
+    "react/jsx-no-bind": [1, {
+      "ignoreRefs": false,
+      "allowArrowFunctions": true,
+      "allowBind": false
+    }],
+    "operator-linebreak": ["error", "after"],
+    "require-jsdoc": 0,
+    "padded-blocks": ["error", {"blocks": "never", "classes": "always", "switches": "never" }],
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "plugins": [
+    "react",
+    "jest"
+  ],
+  "extends": ["eslint:all", "plugin:react/all", "plugin:jest/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+}

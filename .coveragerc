@@ -1,0 +1,7 @@
+[run]
+source=nfl_picks/
+
+[report]
+omit=*/tests/*, nfl_picks/settings.py
+include=nfl_picks/*.*
+skip_covered=True

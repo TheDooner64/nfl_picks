@@ -6,6 +6,7 @@ from flask import render_template, jsonify
 from nfl_picks import app, models
 
 
+@app.route('/<path:path>', methods=['GET'])
 @app.route('/', methods=['GET'], defaults={'path': ''})
 def index(path):
     return render_template('index.html')

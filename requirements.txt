@@ -1,5 +1,8 @@
 Flask==0.12.2
+Flask-Handlers==0.0.1
 Flask-Migrate==2.1.1
+Flask-Restless==0.17.0
+Flask-Webpack==0.1.0
 flask_sqlalchemy==2.3.2
 lxml<4.0.0
 psycopg2==2.7.4
