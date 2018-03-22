@@ -1,0 +1,16 @@
+.team {
+  li {
+    line-height: 1.8;
+    font-size: 0.8em;
+  }
+
+  .selectedTeam {
+    color: blue;
+    text-decoration: line-through;
+  }
+
+  .lockedTeam {
+    color: red;
+    text-decoration: line-through;
+  }
+}

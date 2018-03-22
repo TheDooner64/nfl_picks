@@ -1,5 +1,17 @@
 {
   "parser": "babel-eslint",
+  "overrides": [
+    {
+      "files": ["*.spec.js"],
+      "rules": {
+        "no-plusplus": 0,
+        "global-require": 0,
+        "no-magic-numbers": 0,
+        "no-undefined": 0,
+        "max-statements": 0
+      }
+    }
+  ],
   "rules": {
     "class-methods-use-this": ["error", {
       "exceptMethods": [
@@ -16,6 +28,8 @@
         "componentWillUnmount",
       ],
     }],
+    "function-paren-newline": ["error", "consistent"],
+    "implicit-arrow-linebreak": 0,
     "indent": [ 2, 2, {
       "VariableDeclarator": {
         "var": 2,
@@ -24,15 +38,18 @@
       },
       "SwitchCase": 1
     }],
-    "quotes": [ 2, "single" ],
+    "lines-around-comment": 0,
     "linebreak-style": [ 2, "unix" ],
-    "semi": [ 2, "never" ],
-    "quote-props": [ "error", "consistent-as-needed" ],
-    "one-var": [ "error", {"const": "never"} ],
-    "no-extra-parens": [ "error", "all", {"nestedBinaryExpressions": false, ignoreJSX: "multi-line"}],
-    "no-ternary": 0,
-    "no-magic-numbers": ["error", { "ignore": [0, 1] }],
     "max-len": ["error", 120],
+    "no-ternary": 0,
+    "no-magic-numbers": ["error", { "ignore": [0] }],
+    "one-var": [ "error", {"const": "never"} ],
+    "operator-linebreak": ["error", "after"],
+    "padded-blocks": ["error", {"blocks": "never", "classes": "always", "switches": "never" }],
+    "quote-props": [ "error", "consistent-as-needed" ],
+    "quotes": [ 2, "single" ],
+    "semi": [ 2, "never" ],
+    "no-extra-parens": [ "error", "all", {"nestedBinaryExpressions": false, ignoreJSX: "multi-line"}],
     "max-lines": ["error", {"max": 400}],
     "max-statements": ["error", {"max": 15}],
     "react/jsx-wrap-multilines": [1, {"declaration": true, "assignment": true, "return": true, "arrow": false}],
@@ -51,9 +68,7 @@
       "allowArrowFunctions": true,
       "allowBind": false
     }],
-    "operator-linebreak": ["error", "after"],
     "require-jsdoc": 0,
-    "padded-blocks": ["error", {"blocks": "never", "classes": "always", "switches": "never" }],
   },
   "env": {
     "es6": true,
