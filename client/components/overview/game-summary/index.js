@@ -1,4 +1,4 @@
-import Game from 'components/game'
+import Game from './game'
 import React from 'react'
 import styles from './styles.scss'
 

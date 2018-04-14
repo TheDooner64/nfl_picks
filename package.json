@@ -73,6 +73,7 @@
     "react-timeseries-charts": "0.13.0",
     "react-tippy": "1.2.2",
     "redux": "3.7.2",
+    "redux-devtools-extension": "2.13.2",
     "redux-form": "7.2.1",
     "redux-logger": "3.0.6",
     "redux-saga": "0.16.0",

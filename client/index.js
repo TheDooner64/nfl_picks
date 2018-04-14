@@ -1,116 +1,25 @@
-import './main.scss'
-import Header from 'components/header'
-import Overview from 'components/overview'
+/* global window */
+/* eslint no-underscore-dangle: 0 */
+import {applyMiddleware, compose, createStore} from 'redux'
+import App from './components/app'
+import {Provider} from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import reducers from './reducers'
 
-const CONFERENCES = [
-  {
-    divisions: [
-      {
-        id: 1,
-        name: 'AFC East',
-        teams: [
-          {
-            id: 1,
-            name: 'New York Jets'
-          },
-          {
-            id: 2,
-            name: 'New England Patriots'
-          },
-          {
-            id: 3,
-            name: 'Miami Dolphins'
-          },
-          {
-            id: 4,
-            name: 'Buffalo Bills'
-          }
-        ]
-      },
-      {
-        id: 2,
-        name: 'AFC West',
-        teams: [
-          {
-            id: 5,
-            name: 'F New York Jets'
-          },
-          {
-            id: 6,
-            name: 'F New England Patriots'
-          },
-          {
-            id: 7,
-            name: 'F Miami Dolphins'
-          },
-          {
-            id: 8,
-            name: 'F Buffalo Bills'
-          }
-        ]
-      }
-    ],
-    id: 1,
-    name: 'AFC'
-  },
-  {
-    divisions: [
-      {
-        id: 3,
-        name: 'NFC East',
-        teams: [
-          {
-            id: 9,
-            name: 'New York Jets 2'
-          },
-          {
-            id: 10,
-            name: 'New England Patriots 2'
-          },
-          {
-            id: 11,
-            name: 'Miami Dolphins 2'
-          },
-          {
-            id: 12,
-            name: 'Buffalo Bills 2'
-          }
-        ]
-      },
-      {
-        id: 4,
-        name: 'NFC West',
-        teams: [
-          {
-            id: 13,
-            name: 'F New York Jets 2'
-          },
-          {
-            id: 14,
-            name: 'F New England Patriots 2'
-          },
-          {
-            id: 15,
-            name: 'F Miami Dolphins 2'
-          },
-          {
-            id: 16,
-            name: 'F Buffalo Bills 2'
-          }
-        ]
-      }
-    ],
-    id: 2,
-    name: 'NFC'
-  }
-]
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const enhancer = composeEnhancers(applyMiddleware())
+const initialState = {}
+const store = createStore(reducers, initialState, enhancer)
+
+// <Provider store={createStoreWithMiddleware(reducers)}>
+
+// Redux docs suggest passing a default state like so
+// const store = createStore(todoApp, window.STATE_FROM_SERVER)
 
 ReactDOM.render(
-  <div>
-    <Header />
-    <Overview conferences={CONFERENCES} />
-  </div>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 )

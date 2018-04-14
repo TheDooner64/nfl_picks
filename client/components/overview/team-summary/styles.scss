@@ -1,0 +1,27 @@
+.teamSummaryContainer {
+  .teamSummary {
+    border-style: solid;
+    border-width: thin;
+    border-radius: 25px;
+    background-color: #f2f2f2;
+    min-width: 115px;
+    min-height: 80vh;
+  }
+}
+
+.team {
+  li {
+    line-height: 1.8;
+    font-size: 0.8em;
+  }
+
+  .selectedTeam {
+    color: blue;
+    text-decoration: line-through;
+  }
+
+  .lockedTeam {
+    color: red;
+    text-decoration: line-through;
+  }
+}
