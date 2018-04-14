@@ -1,20 +1,20 @@
+import {PICK_LAYOUT} from '../constants'
+import PickNavChoice from './pick-nav-choice/container'
 import React from 'react'
 import styles from './styles.scss'
 
 const PickNav = () => {
+  const halves = Object.keys(PICK_LAYOUT)
   return (
     <div className={`${styles.pickNav}`}>
       <ul className="nav nav-pills">
-        <li className="nav-item">
-          <a className="nav-link active" href="#">
-            {'1st half'}
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-            {'2nd half'}
-          </a>
-        </li>
+        {
+          halves.map((halfId) => {
+            return (
+              <PickNavChoice halfId={halfId} key={halfId} />
+            )
+          })
+        }
       </ul>
     </div>
   )

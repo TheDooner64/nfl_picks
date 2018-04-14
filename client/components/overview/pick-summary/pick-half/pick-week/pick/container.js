@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {selectTeam} from './actions'
 
 const mapStateToProps = (state, ownProps) => {
-  // We can also reference the static team data here, and retriece the latest odds data
+  // We can also reference the static team data here, and retrieve the latest odds data
   const {picks} = state
   const {fullPickId} = ownProps
   const selectedTeams = _.invert(picks)
