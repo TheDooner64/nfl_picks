@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const PickNavChoice = ({actions, halfId, selectedHalf}) => {
+  // NOTE: Come up w/ a cleaner way to map the ID and the label
   const halfLabel = halfId === 'half1' ?
     'First half' :
     'Second half'

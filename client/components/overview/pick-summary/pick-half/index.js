@@ -5,7 +5,7 @@ import styles from './styles.scss'
 
 const PickHalf = ({half}) => {
   return (
-    <div className={`${styles.pickSummaryContainer}`}>
+    <div>
       {
         Object.keys(half).map((weekId) => {
           return (
@@ -17,8 +17,6 @@ const PickHalf = ({half}) => {
   )
 }
 
-PickHalf.propTypes = {
-  half: PropTypes.shape().isRequired
-}
+PickHalf.propTypes = {half: PropTypes.shape().isRequired}
 
 export default PickHalf

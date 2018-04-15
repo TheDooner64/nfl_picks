@@ -24,7 +24,7 @@ class Pick extends PureComponent {
 
   // Add a ref to this field so we don't need to override the handleOnChange
   render () {
-    const {fullPickId, availableTeams} = this.props
+    const {availableTeams, fullPickId} = this.props
 
     return (
       <div className={`${styles.pick}`}>
@@ -35,7 +35,7 @@ class Pick extends PureComponent {
           onChange={this.handleOnChange}
           type="text"
         >
-          <option label="--" />
+          <option label="--" value="" />
           {
             _.map(availableTeams, (team) => {
               // Use an if condition to add "selected" to the option that's currently selected
@@ -57,4 +57,5 @@ Pick.propTypes = {
   fullPickId: PropTypes.string.isRequired
 }
 
-export default reduxForm({form: 'pick'})(Pick)
+// I'm not passing any form config here, because I am dynamically setting it to fullPickId in the container
+export default reduxForm()(Pick)

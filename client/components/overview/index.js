@@ -1,4 +1,4 @@
-import PickSummary from './pick-summary'
+import PickSummary from './pick-summary/container'
 import React from 'react'
 import TeamSummary from './team-summary/container'
 import styles from './styles.scss'
@@ -13,7 +13,7 @@ const Overview = () => {
         <div className="col-md-9">
           <div className="row">
             <div>
-              <PickSummary selectedHalf="half1" />
+              <PickSummary />
             </div>
           </div>
           <div className="row">
