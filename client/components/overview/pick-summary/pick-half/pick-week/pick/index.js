@@ -1,7 +1,6 @@
 import {Field, reduxForm} from 'redux-form'
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import styles from './styles.scss'
 
 // PureComponent will only update the prop it receives has a change
@@ -14,17 +13,21 @@ class Pick extends PureComponent {
 
   handleOnChange (event) {
     const teamCode = event.target.value
-    const {actions, fullPickId} = this.props
-    const pick = {
-      fullPickId,
-      teamCode
-    }
-    actions.selectTeam(pick)
+    const {actions, fullPickId, pick} = this.props
+    pick.teamCode = teamCode
+
+    // TODO: Figure out a cleaner way to update the pick w/o having to recreate an object w/ fullPickId
+    actions.selectTeam(
+      {
+        fullPickId,
+        pick
+      }
+    )
   }
 
   // Add a ref to this field so we don't need to override the handleOnChange
   render () {
-    const {availableTeams, fullPickId} = this.props
+    const {fullPickId, myAvailableTeams} = this.props
 
     return (
       <div className={`${styles.pick}`}>
@@ -37,10 +40,10 @@ class Pick extends PureComponent {
         >
           <option label="--" value="" />
           {
-            _.map(availableTeams, (team) => {
+            Object.keys(myAvailableTeams).map((teamCode) => {
               // Use an if condition to add "selected" to the option that's currently selected
               return (
-                <option key={team.teamCode} label={team.teamCode} value={team.teamCode} />
+                <option key={teamCode} label={teamCode} value={teamCode} />
               )
             })
           }
@@ -53,8 +56,9 @@ class Pick extends PureComponent {
 
 Pick.propTypes = {
   actions: PropTypes.shape({selectTeam: PropTypes.func.isRequired}).isRequired,
-  availableTeams: PropTypes.shape().isRequired,
-  fullPickId: PropTypes.string.isRequired
+  fullPickId: PropTypes.string.isRequired,
+  myAvailableTeams: PropTypes.shape().isRequired,
+  pick: PropTypes.shape().isRequired
 }
 
 // I'm not passing any form config here, because I am dynamically setting it to fullPickId in the container

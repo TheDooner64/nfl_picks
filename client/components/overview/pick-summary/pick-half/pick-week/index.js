@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './styles.scss'
 
-const PickWeek = ({week, weekId}) => {
+const PickWeek = ({availableTeams, week, weekId}) => {
   return (
     <div className={`${styles.pickWeek}`}>
       <h6>
@@ -13,7 +13,7 @@ const PickWeek = ({week, weekId}) => {
         Object.keys(week).map((pickId) => {
           const fullPickId = `${weekId}${pickId}`
           return (
-            <Pick fullPickId={fullPickId} key={fullPickId} />
+            <Pick availableTeams={availableTeams} fullPickId={fullPickId} key={fullPickId} pick={week[pickId]} />
           )
         })
       }
@@ -22,6 +22,7 @@ const PickWeek = ({week, weekId}) => {
 }
 
 PickWeek.propTypes = {
+  availableTeams: PropTypes.shape().isRequired,
   week: PropTypes.shape().isRequired,
   weekId: PropTypes.string.isRequired
 }

@@ -1,15 +1,14 @@
 import PickWeek from './pick-week'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './styles.scss'
 
-const PickHalf = ({half}) => {
+const PickHalf = ({availableTeams, half}) => {
   return (
     <div>
       {
         Object.keys(half).map((weekId) => {
           return (
-            <PickWeek key={weekId} week={half[weekId]} weekId={weekId} />
+            <PickWeek availableTeams={availableTeams} key={weekId} week={half[weekId]} weekId={weekId} />
           )
         })
       }
@@ -17,6 +16,9 @@ const PickHalf = ({half}) => {
   )
 }
 
-PickHalf.propTypes = {half: PropTypes.shape().isRequired}
+PickHalf.propTypes = {
+  availableTeams: PropTypes.shape().isRequired,
+  half: PropTypes.shape().isRequired
+}
 
 export default PickHalf

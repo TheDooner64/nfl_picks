@@ -1,19 +1,15 @@
-import {TEAMS} from '../constants'
-import TeamSummary from './index'
-import _ from 'lodash'
+import PickHalf from './index'
+import {TEAMS} from '../../constants'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => {
+  // We can also reference the static team data here, and retrieve the latest odds data
   const {picks, selectedHalf} = state
-
-  // TODO: Don't redo all of this same logic!!
 
   // TODO: Come up w/ a better structure for the pick layout so I don't need to do all of these transformations
   const selectedHalfInt = parseInt(selectedHalf.slice(-1))
 
   // TODO: Figure out how to get linter to ignore this
-
-  // TODO: Refactor this so we don't need to create a new object from an array, etc
 
   // Determine the selected teams for the selected half of the season
   const selectedTeams = Object.keys(picks)
@@ -28,20 +24,24 @@ const mapStateToProps = (state) => {
     .map((fullPickId) => {
       return picks[fullPickId].teamCode
     })
+
+  // TODO: Investigate if half1 and half2 should have different state variables
+
+  // Set the available teams prop in the container file based on the state of "picks" (state != props)
+  const availableTeams = Object.keys(TEAMS)
+    .filter((teamCode) => {
+      return !selectedTeams.includes(teamCode)
+    })
     .reduce((prev, teamCode) => {
-      prev[teamCode] = teamCode
+      prev[teamCode] = TEAMS[teamCode]
       return prev
     }, {})
 
-  const divisions = _.groupBy(TEAMS, (team) => {
-    return team.division
-  })
-
   return {
-    divisions,
+    availableTeams,
     picks,
     selectedTeams
   }
 }
 
-export default connect(mapStateToProps)(TeamSummary)
+export default connect(mapStateToProps)(PickHalf)

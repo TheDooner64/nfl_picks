@@ -1,6 +1,5 @@
 import Pick from './index'
 import {TEAMS} from '../../../../constants'
-import _ from 'lodash'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {selectTeam} from './actions'
@@ -8,24 +7,26 @@ import {selectTeam} from './actions'
 const mapStateToProps = (state, ownProps) => {
   // We can also reference the static team data here, and retrieve the latest odds data
   const {picks} = state
-  const {fullPickId} = ownProps
+  const {availableTeams, fullPickId} = ownProps
+  const selectedTeamCode = picks[fullPickId].teamCode
+  const selectedTeam = TEAMS[selectedTeamCode]
 
-  const selectedTeams = _.invert(picks)
-  const selectedTeam = picks[fullPickId]
+  // TODO: Come up w/ a better name than myAvailableTeams
 
-  // Calculate availableTeams prop in the container file based on the state of "picks" (state != props)
-  const availableTeams = _.pickBy(TEAMS, (team) => {
-    return selectedTeam === team.teamCode || !(team.teamCode in selectedTeams)
-  })
+  // Add the current selected team to the availableTeams
+  const myAvailableTeams = selectedTeam ?
+    {
+      [selectedTeamCode]: selectedTeam,
+      ...availableTeams
+    } :
+    availableTeams
 
   return {
-    availableTeams,
     // Dynamically set form name to fullPickId
     form: fullPickId,
     // Set initialValues to the current pick so we persist the values when tabbing between half1 and half2
-    initialValues: {[fullPickId]: selectedTeam},
-    picks,
-    selectedTeam
+    initialValues: {[fullPickId]: selectedTeamCode},
+    myAvailableTeams
   }
 }
 

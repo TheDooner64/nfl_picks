@@ -1,5 +1,5 @@
 import {PICK_LAYOUT} from './constants'
-import PickHalf from './pick-half'
+import PickHalf from './pick-half/container'
 import PickNav from './pick-nav/container'
 import PropTypes from 'prop-types'
 import React from 'react'
